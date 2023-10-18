@@ -1,0 +1,6 @@
+# vim: filetype=neomuttrc
+# You can add your own mutt keybindings here
+
+# macro index \# "<edit-label>\n" "Mark as Complete"
+
+

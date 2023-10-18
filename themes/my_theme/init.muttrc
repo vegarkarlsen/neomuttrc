@@ -1,0 +1,11 @@
+# vim: filetype=neomuttrc
+
+# Genreall settings
+set pager_index_lines=10             # Number of index lines to show while reading mail
+unset help
+unset markers
+# style
+source $HOME/.config/mutt/themes/my_theme/style.muttrc
+
+# sidebar
+source $HOME/.config/mutt/themes/my_theme/sidebar.vimrc

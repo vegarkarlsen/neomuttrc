@@ -1,0 +1,141 @@
+# vim: filetype=neomuttrc
+#
+set mailcap_path = $HOME/.config/mutt/mailcap       # This file descrive how to view messages
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Account-spesific, and Mailboxes
+#### ----------------------------------------------------------------------------------------------------------------------------------
+source $HOME/.config/mutt/account.muttrc
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Key bindings
+#### ----------------------------------------------------------------------------------------------------------------------------------
+
+# Unbind all keybindings
+source $HOME/.config/mutt/keys/unbinds.muttrc 
+# set general keybindings
+source $HOME/.config/mutt/keys/general_binds.muttrc 
+# set personal keybindings
+source $HOME/.config/mutt/keys/personal_binds.muttrc
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### General Settings
+#### ----------------------------------------------------------------------------------------------------------------------------------
+set sleep_time = 0                  # Pause 0 seconds for informational messages
+set mark_old = no                   # Unread mail stay unread until read
+# set mime_forward = no             # attachments are forwarded with mail
+set wait_key = no                   # mutt won't ask "press key to continue"
+set fast_reply                      # skip to compose when replying
+# set fcc_attach                    # save attachments with the body
+set forward_format = "FW: %s"       # format of subject when forwarding
+set forward_quote                   # quote forwarded message
+set reverse_name                    # Try to guess which address we should use for From: by using alternates
+set reverse_realname=yes            # use any real name provided when replying
+set auto_tag                        # automatically apply commands to all tagged messages (if some messages are tagged)
+set include                         # include message in replies
+# set mail_check=5                  # to avoid lags using IMAP with some email providers (yahoo for example)
+# set timeout=5                     # how long to wait after user input until unblocking background stuff like mail syncing
+set count_alternatives=yes        # recurse into text/multipart when looking for attachement types
+set thorough_search=no              # don't process mail (via mailcap etc) before parsing with queries like ~B
+set flag_safe                       # flagged messages can't be deleted
+set abort_unmodified                # Ignore unsaved messages
+set autoedit                        # Jump straight to editing message
+set bounce_delivered=no             # Don't remove delivered-to when bouncing
+set charset=utf-8                   # utf-8 ftw :-)
+set check_new=yes
+set copy=yes                        # Save outgoing mail.
+set delete=ask-yes                  # Ask before deleting mail
+set edit_headers                    # Allow me to change headers
+set followup_to=no                  # Don't set followup-to headers
+# # set mail_check = 0              # How often to check for mail
+set pager_stop=yes                  # Don't skip to next when we get to end of a message
+set postpone=ask-yes                # Ask when aborting writing.
+# # set print=ask-no                # Ask before printing. Usually not what you want, anyway
+# # set read_inc=1000               # Speed up opening of large mboxes
+set send_charset=utf-8            # utf-8 ftw :-)
+# # set status_on_top               # Move status bar to top
+set strict_threads = "yes"          # Only group real threads, not stuff with same subject.
+set virtual_spoolfile               # allow using virtual mailboxes as spoolfile 
+set use_from                        # Set From: field
+
+set beep=no                         # don't beep for errors
+set beep_new                        # beep for new messages
+
+# Notmuch
+set nm_record = yes
+set nm_unread_tag = unread
+set nm_record_tags = "sent,unread"
+set nm_query_type = message         # bring in the whole thread instead of just the matched message, really useful
+# set nm_config_file = auto         # Configuration file for the notmuch database 
+# set nm_open_timout = 5
+# set nm_query_type = 
+
+# Mail sorting
+set sort=threads                    # Sort by threads
+set sort_aux=last-date-received     # Then by time
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Theme
+#### ----------------------------------------------------------------------------------------------------------------------------------
+
+source $HOME/.config/mutt/themes/my_theme/init.muttrc
+# source $HOME/.config/mutt/themes/tokyo_night.muttrc
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Header Options TODO: mabye some of this is also theme? Pager section in theme?
+#### ----------------------------------------------------------------------------------------------------------------------------------
+ignore *                                # ignore all headers
+unignore From To Subject Delivery-date
+unignore Resent-To X-Spam-Score X-Spam-Report X-Spam-Folder
+# unignore from: to: Subject Delivery-date
+# unignore Resent-To X-Spam-Score X-Spam-Report X-Spam-Folder
+
+# unhdr_order *                           # some distros order things by default
+# hdr_order from: to: cc: date: subject:  # header item ordering (not sure if this does anythin)
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### View Settings 
+#### ----------------------------------------------------------------------------------------------------------------------------------
+set allow_ansi             # allow ansi escape codes (e.g. colors)
+set pager_context = 3      # number of context lines to show TODO: find out what this does
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set smart_wrap             # wrap lines at word boundaries rather than splitting up words
+set wrap=90                # email view width
+# set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+# set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+# Tidy up emails significantly #TODO: find out what this does and if we need to cahnge it
+# set display_filter="perl -0777pe 's/___{10,}[^_]*microsoft teams meeting.*to join the meeting<([^>]*).*(___{10,})/\\n────────────────────────────────────────────────────────────────────────\\n\\nTeams Meeting ~~\\n\\nMeeting URL:\\n$1\\n\\n────────────────────────────────────────────────────────────────────────/is'| sed 's/^\\(To\\|CC\\): \\([^<]*[^>]\\)$/\\1\:<\\2>/g' | perl -0777pe 's/(((?!.*CC:)To:|CC:).+?(?=>\\n)>)/$1!REMOVE_ME!\\n!END!/gs' | sed '/^To:/{;:l N;/!END!/b; s/\\(\\n\\|  *\\|\\t\\t*\\)/ /g; bl}' | sed '/^To:/,/>$/ s/\\([^>]*>,\\?\\)/\\1\\n/g' | sed -e 's/^ \\(CC:\\)\\(.*$\\)/\\1\\n\\2/' -e 's/^\\(To:\\)\\(.*$\\)/\\1 --------------------------------------------------------------------\\n\\2/' -e 's/^!END!$/------------------------------------------------------------------------/' -e '/!REMOVE_ME!/d' -e '/\\[-- Type: text.* --\\]/d' -e '/\\[-- Autoview.* --\\]/d' -e '/\\[-- Type.* --\\]/d' -e '/\\[-- .*unsupported.* --\\]/d' -e '/\\[-- Attachment #[0-9] --\\]/d' -e 's/Attachment #[0-9]: //g' -e '/./,/^$/!d' -e 's/\\([A-Z]*\\), *\\([A-Za-z]*\\)\\(\"\\)\\?/\\2 \\L\\u\\1\\E\\3/g'"
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Content/Autoview
+#### ----------------------------------------------------------------------------------------------------------------------------------
+# auto_view application/ics
+# auto_view text/calendar
+# auto_view text/plain
+# auto_view text/html
+# auto_view application/pgp-encrypted
+# alternative_order text/calendar application/ics text/plain text/enriched text/html
+
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Text editor TODO: find out if mutt trim is nessesary
+#### ----------------------------------------------------------------------------------------------------------------------------------
+set editor="nvim +':set textwidth=72' +':set wrapmargin=0' +':set wrap' +':set spell' %s"
+
+
+# macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=UTF-8\n" "Convert from MD to HTML"
+
+#### Show patch files (requires git-split-diffs)
+# macro attach P "|git-split-diffs --color | less -RF<enter>" "View a patch file as a diff"
+# set wait_key=no
+
+# syncing hooks
+timeout-hook 'exec sync-mailbox' # sync mailbox whenever idle
+shutdown-hook 'exec sync-mailbox' # sync mailbox on exit
+

@@ -1,0 +1,38 @@
+# vim: filetype=neomuttrc
+# Change all relevante settings to your own
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Account spesifc settings
+#### ----------------------------------------------------------------------------------------------------------------------------------
+
+set realname = "real name"
+set from = "username@mail.com"
+alias me rela name <vusername@mail.com>
+set mbox_type = Maildir
+set signature = "<path to signature>"
+
+set folder="$HOME/Mail/"                                # root folder off all mail
+set record="~/Mail/.sent"
+set header_cache = "$HOME/.cache/mutt/header-cache"
+set message_cachedir = "$HOME/.cache/mutt/body-cache"
+set postponed='$HOME/Mail/.drafts'
+
+set nm_default_url = "notmuch:///<path to notmuch database>"         # default notmuch URL
+set sort_browser=unsorted # don't try to sort my mailboxes
+
+set virtual_spoolfile                               # allow using virtual mailboxes as spoolfile 
+set spoolfile=Inbox
+
+
+
+#### ----------------------------------------------------------------------------------------------------------------------------------
+#### Mailbox
+#### --------------------------------------------------------------------------------------------------------------------------------
+
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox&limit=300"
+virtual-mailboxes "Archive" "notmuch://?query=tag:archive&limit=10000"
+virtual-mailboxes "Sendt" "notmuch://?query=tag:sent"
+virtual-mailboxes "Spam" "notmuch://?query=tag:spam"
+virtual-mailboxes "All" "notmuch://?query=not tag:spam&limit=300"
+
+
