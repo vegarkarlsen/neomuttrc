@@ -1,0 +1,2 @@
+# neomuttrc
+My neomutt config
