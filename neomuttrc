@@ -2,7 +2,6 @@
 #
 set mailcap_path = $HOME/.config/mutt/mailcap       # This file descrive how to view messages
 
-
 #### ----------------------------------------------------------------------------------------------------------------------------------
 #### Account-spesific, and Mailboxes
 #### ----------------------------------------------------------------------------------------------------------------------------------
@@ -36,13 +35,14 @@ set auto_tag                        # automatically apply commands to all tagged
 set include                         # include message in replies
 # set mail_check=5                  # to avoid lags using IMAP with some email providers (yahoo for example)
 # set timeout=5                     # how long to wait after user input until unblocking background stuff like mail syncing
-set count_alternatives=yes        # recurse into text/multipart when looking for attachement types
+set count_alternatives=yes          # recurse into text/multipart when looking for attachement types
 set thorough_search=no              # don't process mail (via mailcap etc) before parsing with queries like ~B
 set flag_safe                       # flagged messages can't be deleted
 set abort_unmodified                # Ignore unsaved messages
 set autoedit                        # Jump straight to editing message
 set bounce_delivered=no             # Don't remove delivered-to when bouncing
 set charset=utf-8                   # utf-8 ftw :-)
+set send_charset=utf-8              # utf-8 ftw :-)
 set check_new=yes
 set copy=yes                        # Save outgoing mail.
 set delete=ask-yes                  # Ask before deleting mail
@@ -53,7 +53,6 @@ set pager_stop=yes                  # Don't skip to next when we get to end of a
 set postpone=ask-yes                # Ask when aborting writing.
 # # set print=ask-no                # Ask before printing. Usually not what you want, anyway
 # # set read_inc=1000               # Speed up opening of large mboxes
-set send_charset=utf-8            # utf-8 ftw :-)
 # # set status_on_top               # Move status bar to top
 set strict_threads = "yes"          # Only group real threads, not stuff with same subject.
 set virtual_spoolfile               # allow using virtual mailboxes as spoolfile 

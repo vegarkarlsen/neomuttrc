@@ -82,7 +82,7 @@ bind index,pager d delete-message
 
 # archive entety or tagged
 macro index,pager a "<modify-labels-then-hide> -inbox +archive<enter><untag-pattern>T<enter>" "archive mail"
-# markk as spam 
+# mark as spam 
 macro index,pager 0 "<modify-labels-then-hide> -inbox -all +spam<enter><untag-pattern>T<enter>" "Tag as spam"
 
 bind index,pager o modify-labels

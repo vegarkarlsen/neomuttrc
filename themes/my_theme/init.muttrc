@@ -6,6 +6,7 @@ unset help
 unset markers
 # style
 source $HOME/.config/mutt/themes/my_theme/style.muttrc
+# source $HOME/.config/mutt/themes/my_theme/index.muttrc
 
 # sidebar
-source $HOME/.config/mutt/themes/my_theme/sidebar.vimrc
+source $HOME/.config/mutt/themes/my_theme/sidebar.muttrc

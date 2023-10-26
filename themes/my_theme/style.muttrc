@@ -5,7 +5,8 @@
 
 # Formatting   ----------------------------------------------------------------------
 set date_format = "%a %d %h %H:%M"
-set index_format="  %zc %zs %zt  | %-35.35L %Gi %Ga %Gs %@attachment_info@ %?M10?~(%1M) ?%-30.100s %> %?Y?%Y ? %(!%a %d %h %H:%M)  "
+# set index_format="  %zc %zs %zt  | %-35.35L %Gi %Ga %Gs %@attachment_info@ %?M10?~(%1M) ?%-30.100s %> %?Y?%Y? %(!%a %d %h %H:%M)  "
+set index_format="  %zc %zs %zt  | %-35.35L %Gi %Ga %Gs %@attachment_info@ %?M10?~(%1M) ?%-30.100s %> %GT %(!%a %d %h %H:%M)  "
 set pager_format="%n %T %s%*  %{!%d %b · %H:%M} %?X? %X?%P"
 # D: Date, u: user
 # set status_format = " %D %?u? %u ?%?R? %R ?%?d? %d ?%?t? %t ?%?F? %F ?%?p? %p? \n  \n"
@@ -67,7 +68,6 @@ color tree  color8 color8                       # thread tree lines/arrow
 color indicator default color8                  # selection indicator
 color index_date color8 default                 # date is always the same colour
 color index_label color6 default                # label is always the same colour
-
 
 
 # Sidebar Colors   ------------------------------------------------------------------
@@ -167,6 +167,7 @@ tag-transforms "replied" "↻ "  \
                "inbox" "✉️" \
                "archive" "📁" \
                "spam" "🚫" \
+               "todo" "todo" \
 
 
 # The formats must start with 'G' and the entire sequence is case sensitive.
@@ -177,6 +178,7 @@ tag-formats "replied" "GR" \
             "inbox" "Gi" \
             "archive" "Ga" \
             "spam" "Gs" \
+            "todo" "GT" \
 
  # don't put '+' at the beginning of wrapped lines
 # unset markers=no
