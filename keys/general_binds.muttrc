@@ -71,7 +71,6 @@ bind index t tag-entry
 bind index T tag-thread
 macro index \Ct "<untag-pattern>~T<enter>" "Untag all taged"
 bind index,pager <space> flag-message 
-# macro index w "<limit>~T\n" "Limit by tag"
 
 # bind index u undelete-message
 # bind index U undelete-thread
@@ -126,12 +125,14 @@ bind attach,compose | pipe-entry
 # ----------------------------------------------------------------------------------------------------------------
 # Commands and Misc
 # ----------------------------------------------------------------------------------------------------------------
+
 bind index,pager $ sync-mailbox # more like a refresh than a sync
 bind editor <Tab> complete-query
 bind index,pager n search-next
 bind index,pager N search-opposite
 bind index,pager p search-opposite
 bind index,pager,attach,editor,compose <F5> refresh
+
 # macro index,pager \cl '<pipe-message>urlscan -d -w 80<enter>' "call urlscan to open links"
 # macro index O "<shell-escape>mbsync -a -c $HOME/.config/isync/mbsyncrc<enter>" "run mbsync to sync all mail"
 macro attach s '<save-entry><kill-line>~/Downloads/<enter>a' "Save file to ~/Downloads"
