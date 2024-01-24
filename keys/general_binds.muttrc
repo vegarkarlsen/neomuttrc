@@ -69,26 +69,30 @@ bind index,pager,attach,browser,query,alias,compose q exit
 # ----------------------------------------------------------------------------------------------------------------
 bind index t tag-entry
 bind index T tag-thread
-macro index \Ct "<untag-pattern>T<enter>" "Untag all taged"
+macro index \Ct "<untag-pattern>~T<enter>" "Untag all taged"
 bind index,pager <space> flag-message 
+# macro index w "<limit>~T\n" "Limit by tag"
 
-bind index u undelete-message
-bind index U undelete-thread
-
-bind index,pager d delete-message
+# bind index u undelete-message
+# bind index U undelete-thread
+# bind index,pager d delete-message
 
 # FIXME: Labels currently makes mail unreadable
 # bind index,pager L edit-label
 
 # archive entety or tagged
-macro index,pager a "<modify-labels-then-hide> -inbox +archive<enter><untag-pattern>T<enter>" "archive mail"
+macro index,pager a "<modify-labels-then-hide> -inbox +archive<enter><untag-pattern>~T<enter>" "archive mail"
 # mark as spam 
-macro index,pager 0 "<modify-labels-then-hide> -inbox -all +spam<enter><untag-pattern>T<enter>" "Tag as spam"
+macro index,pager 0 "<modify-labels-then-hide> -inbox -all +spam<enter><untag-pattern>~T<enter>" "Tag as spam"
+# undo archive
+macro index,pager u "<modify-labels> +inbox -archive -spam<enter><untag-pattern>~T<enter>" "undo archive, or spam"
 
+# modify labels manualy
 bind index,pager o modify-labels
 
-# TODO: s serach in current mailbox, S serach in all
+# serach in all mail.
 bind index,pager s vfolder-from-query
+# TODO: serach in mailbox?
 
 # ----------------------------------------------------------------------------------------------------------------
 # Compose, Replies and Forwarding
