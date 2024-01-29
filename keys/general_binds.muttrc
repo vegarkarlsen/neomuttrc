@@ -80,9 +80,13 @@ bind index,pager <space> flag-message
 # bind index,pager L edit-label
 
 # archive entety or tagged
-macro index,pager a "<modify-labels-then-hide> -inbox +archive<enter><untag-pattern>~T<enter>" "archive mail"
+macro index a "<modify-labels-then-hide> -inbox +archive<enter><untag-pattern>~T<enter>" "archive mail"
+macro pager a "<modify-labels-then-hide> -inbox +archive<enter><next-entry><enter>" "archive mail"
+
 # mark as spam 
-macro index,pager 0 "<modify-labels-then-hide> -inbox -all +spam<enter><untag-pattern>~T<enter>" "Tag as spam"
+macro index 0 "<modify-labels-then-hide> -inbox -all +spam<enter><untag-pattern>~T<enter>" "Tag as spam"
+macro pager 0 "<modify-labels-then-hide> -inbox -all +spam<enter><next-entry><enter>" "Tag as spam"
+
 # undo archive
 macro index,pager u "<modify-labels> +inbox -archive -spam<enter><untag-pattern>~T<enter>" "undo archive, or spam"
 
