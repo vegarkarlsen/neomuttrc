@@ -15,8 +15,8 @@ source $HOME/.config/mutt/account.muttrc
 source $HOME/.config/mutt/keys/unbinds.muttrc 
 # set general keybindings
 source $HOME/.config/mutt/keys/general_binds.muttrc 
-# set personal keybindings
-source $HOME/.config/mutt/keys/personal_binds.muttrc
+# set personal keybindings, this comes after general_binds in case of overwriting genreal binds
+source $HOME/.config/mutt/keys/custom_binds.muttrc
 
 #### ----------------------------------------------------------------------------------------------------------------------------------
 #### General Settings
