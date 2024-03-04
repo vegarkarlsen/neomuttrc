@@ -64,7 +64,7 @@ color index color9 default '~D~R'               # deleted messages (read)
 color index color3 default '~T'                 # tagged messages
 color index color3 default '~T~N'               # tagged messages (new)
 color index color11 default '~T~R'              # tagged messages (read)
-color tree  color8 color8                       # thread tree lines/arrow
+color tree  color8 default                      # thread tree lines/arrow
 color indicator default color8                  # selection indicator
 color index_date color8 default                 # date is always the same colour
 color index_label color6 default                # label is always the same colour
